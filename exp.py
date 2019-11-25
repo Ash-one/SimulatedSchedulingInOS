@@ -1,4 +1,4 @@
-
+import time
 pros=[]
 que =[]
 file = open('./pros.txt').readlines()
@@ -25,19 +25,15 @@ def caculate_rt(pros:list):
     for i in range(len(eachtime)):
         eachtime[i] = eachtime[i]/pros[i][2]
         _time2 += eachtime[i]
-
     return _time/len(pros), _time2/len(pros)
-
 
 def FCFS(pros:list):
     que = sorted(pros,key=lambda x: x[1])
-
     rt1, rt2 = caculate_rt(que)
     return que, rt1, rt2
 
 def SJF(pros:list):
     que = sorted(pros,key= lambda x: x[2])
-
     rt1, rt2 = caculate_rt(que)
     return que, rt1, rt2
 
@@ -45,20 +41,16 @@ def HRRN(pros:list):
     pros_new = []
     for pro in pros:
         Rp = (pro[1] + pro[2]) / pro[2]
-        pro.append(Rp)
+        pro[3] = Rp
         pros_new.append(pro)
     que = sorted(pros_new,key=lambda x: x[3])
-    # return que
-
     rt1,rt2 = caculate_rt(que)
-    
     return que, rt1, rt2
-
-
-
-
-
 
 if __name__ == '__main__':
 
     print(HRRN(pros))
+
+
+
+
