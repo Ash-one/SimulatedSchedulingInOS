@@ -47,8 +47,6 @@ class Controller():
         elif self.algorithm == 3:
             self.HRRN(self.que)
 
-
-
     def HRRN(self,que:list):
         pros_new = []
         for pro in que:
@@ -59,8 +57,6 @@ class Controller():
         self.que = sorted(pros_new, key=lambda x: x[3])
         if len(self.que)!=0:
             self.rt1, self.rt2 = exp.caculate_rt(que)
-
-
 
 class ProcessManagement(threading.Thread):
 

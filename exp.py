@@ -1,17 +1,3 @@
-import time
-pros=[]
-que =[]
-file = open('./pros.txt').readlines()
-for line in file:
-    _list = line.replace('\n', '').split(' ')
-    _pro = []
-    for l in range(len(_list)):
-        if _list[l].isalpha():
-            _pro.append(_list[l])
-        elif _list[l].isdigit():
-            _pro.append(int(_list[l]))
-    pros.append(_pro)
-
 def caculate_rt(pros:list):
     fulltime, eachtime = 0, []
     for pro in pros:
@@ -36,24 +22,4 @@ def SJF(pros:list):
     que = sorted(pros,key= lambda x: x[2])
     rt1, rt2 = caculate_rt(que)
     return que, rt1, rt2
-
-# def HRRN(pros:list):
-#     pros_new = []
-#     for pro in pros:
-#         Rp = (pro[1] + pro[2]) / pro[2]
-#         pro[3] = Rp
-#         pros_new.append(pro)
-#     que = sorted(pros_new,key=lambda x: x[3])
-#     rt1,rt2 = caculate_rt(que)
-#     return que, rt1, rt2
-
-if __name__ == '__main__':
-    que,rt1,rt2=FCFS(pros)
-    print(que,'\n平均轮转时间：',rt1,' 带权平均轮转时间：',rt2)
-
-    que, rt1, rt2 = SJF(pros)
-    print(que, '\n平均轮转时间：', rt1, ' 带权平均轮转时间：', rt2)
-
-
-
 
